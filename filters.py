@@ -30,7 +30,11 @@ def filter_emails(text):
     """
     returns a list of emails found in the string 'text'
     """
-    pass
+    LOCALPART = ['''[a-zA-z0-9]''']
+    MIDDLEPART = ['''[a-zA-Z0-9]*\. ''']
+    DOM = [a-zA-Z]{2,}
+    ACCEPT = '''[!#$%&'*+-/=?^_`{|}~;]'''
+    REGEX = '''LOCALPART + {@} + MIDDLEPART + DOM 
 
 def filter_phones(text):
     """
