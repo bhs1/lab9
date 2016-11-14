@@ -24,12 +24,14 @@ class WebPage:
         """
         return True if and only if the url of this page equals the url
         of page.
+        Args:
+            page (WebPage): a WebPage object to compare
         """
         pass
 
     def populate(self):
         """
-        fetch this WebLink object's webpage text and populate its content
+        fetch this WebPage object's webpage text and populate its content
         """
         pass
 
@@ -51,19 +53,18 @@ class WebPage:
 
 
 class WebCrawler:
-    def __init__(self, base_url, max_links=50, max_depth=5):
+    def __init__(self, base_url, max_links=50):
         """
         Initialize the data structures required to crawl the web.
         Args:
            base_url (str): the starting point of our crawl
            max_links (int): after traversing this many links, stop the crawl
-           max_depth (int): only traverse this many links deep in any direction
         """
 
     def crawl(self):
         """
         starting from self._base_url and until stopping conditions are met,
-        creates WebLink objects and recursively explores their links.
+        creates WebPage objects and recursively explores their links.
         """
 
     def all_emails(self):

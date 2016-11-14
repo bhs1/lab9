@@ -3,7 +3,11 @@ import re
 
 def filter_urls(text, domain='williams.edu'):
     """
-    returns a list of urls found in the string 'text'
+    returns a list of urls found in the string 'text' that are
+    (1) not media files and (2) within the specified domain.
+    Args:
+        text (str): a string that represents the text of a webpage
+        domain (str): a <sub-domain> + '.' + <top-level domain>
     """
     def extension_is_valid(url):
         EXTS = ["jpg", "jpeg", "svg", "png", "pdf",
