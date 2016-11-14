@@ -1,49 +1,54 @@
 import sys
-import socket
-import urllib.request
-import re
+from filters import filter_urls, filter_emails, filter_phones
+import requests
 
-class WebLink:
-    def __init__(self, url, depth):
+
+class WebPage:
+
+    def __init__(self, url):
         """
-        Initializes a WebLink's state including data structures to store:
-        - the set of urls in the WebLink's source
-        - the set of emails in the WebLink's source
-        - the set of phone numbers in the WebLink's source
+        Initializes a WebPage's state with the url, and populates:
+        - the set of urls in the WebPages's source
+        - the set of emails in the WebPages's source
+        - the set of phone numbers in the WebPages's source
         Args:
             url (str): the url to search
-            depth (int): how many links have been traversed to reach this url
         """
+        pass
 
-    @staticmethod
-    def filter_urls(text):
-        """
-        returns a list of urls found in the string 'text'
-        """
-        def extension_is_valid(url):
-            """returns True if url is not a media file"""
-            return True
-        
-    @staticmethod
-    def filter_emails(text):
-        """
-        returns a list of emails found in the string 'text'
-        """
+    def __hash__(self):
+        """Return the hash of the URL"""
+        return hash(self.url())
 
-    @staticmethod
-    def filter_phones(text):
+    def __eq__(self, page):
         """
-        returns a list of uniformly formatted phone numbers extracted from
-        the string 'text'
+        return True if and only if the url of this page equals the url
+        of page.
         """
-        def format_phone(area, base, ext):
-            """returns a uniformly formatted phone number as a string"""
-            return "{}-{}-{}".format(area, base, ext)
+        pass
 
-    def crawl(self):
+    def populate(self):
         """
         fetch this WebLink object's webpage text and populate its content
         """
+        pass
+
+    def url(self):
+        """return the url asssociated with the WebPage"""
+        pass
+
+    def phone_numbers(self):
+        """return the phone numbers associated with the WebPage"""
+        pass
+
+    def emails(self):
+        """return the email addresses associated with the WebPage"""
+        pass
+
+    def urls(self):
+        """return the URLs associated with the WebPage"""
+        pass
+
 
 class WebCrawler:
     def __init__(self, base_url, max_links=50, max_depth=5):
@@ -100,7 +105,7 @@ if __name__ == '__main__':
 
     base_url = sys.argv[1]
     report_path = sys.argv[2]
-    
+
     crawl = WebCrawler(base_url, 15, 2) # until you are confident, use
                                         # small max_links, max_depth
     crawl.crawl()
