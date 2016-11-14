@@ -106,7 +106,6 @@ if __name__ == '__main__':
     base_url = sys.argv[1]
     report_path = sys.argv[2]
 
-    crawl = WebCrawler(base_url, 15, 2) # until you are confident, use
-                                        # small max_links, max_depth
+    crawl = WebCrawler(base_url, 15) # until you are confident use small max_links
     crawl.crawl()
     crawl.output_results(report_path)
